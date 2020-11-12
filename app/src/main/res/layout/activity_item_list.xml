@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/toolbar_card"
+            style="@style/Widget.Task1.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/colorPrimaryDark"
+            app:shapeAppearanceOverlay="@style/Widget.Task1.MainToolbar.Corner">
+
+            <LinearLayout
+                android:id="@+id/toolbar_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/back_button"
+                    style="@style/Widget.Task1.ImageButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dimen8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="@dimen/dimen8dp"
+                    android:rotation="180"
+                    app:srcCompat="@drawable/ic_menu" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="@dimen/match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="@dimen/dimen4dp"
+                    android:layout_weight="2"
+                    android:gravity="end|center"
+                    android:text="@string/level"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="@dimen/match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/dimen4dp"
+                    android:layout_weight="1"
+                    android:gravity="start|center"
+                    android:text="@string/up"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+                    android:textColor="@color/colorAccent" />
+
+                <ImageView
+                    android:id="@+id/bookmark_button"
+                    style="@style/Widget.Task1.ImageButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dimen8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="@dimen/dimen8dp"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/ic_search" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <ScrollView
+            android:id="@+id/scrollview_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:id="@+id/line1"
+                    android:layout_width="@dimen/dimen2dp"
+                    android:layout_height="@dimen/match_parent"
+                    android:layout_marginStart="@dimen/dimen16dp"
+                    android:layout_marginEnd="@dimen/dimen8dp"
+                    android:background="@color/colorAccent"
+                    app:layout_constraintBottom_toBottomOf="@id/title_hor"
+                    app:layout_constraintEnd_toStartOf="@id/title_hor"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/title_hor" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/title_hor"
+                    android:layout_width="@dimen/match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen16dp"
+                    android:text="@string/upcoming_releases"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    app:layout_constraintBottom_toTopOf="@id/list_hor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/line1"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/list_hor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/dimen8dp"
+                    app:layoutManager="LinearLayoutManager"
+                    app:layout_constraintBottom_toTopOf="@id/line2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/title_hor"
+                    tools:listitem="@layout/list_item_hor" />
+
+                <View
+                    android:id="@+id/line2"
+                    android:layout_width="@dimen/dimen2dp"
+                    android:layout_height="@dimen/match_parent"
+                    android:layout_marginStart="@dimen/dimen16dp"
+                    android:layout_marginEnd="@dimen/dimen8dp"
+                    android:background="@color/colorAccent"
+                    app:layout_constraintBottom_toBottomOf="@id/title_ver"
+                    app:layout_constraintEnd_toStartOf="@id/title_ver"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/title_ver" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/title_ver"
+                    android:layout_width="@dimen/match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/news"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    app:layout_constraintBottom_toTopOf="@id/list_ver"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/line2"
+                    app:layout_constraintTop_toBottomOf="@id/list_hor" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/list_ver"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:nestedScrollingEnabled="false"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dimen8dp"
+                    app:layoutManager="LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/title_ver"
+                    tools:listitem="@layout/list_item_ver" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>
